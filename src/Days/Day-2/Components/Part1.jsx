@@ -1,4 +1,8 @@
+import { use } from "react";
+import { useState, createContext, useContext } from "react";
+import { userContext } from "../Pages/HomePage";
 export function Part1(){
+  const count=useContext(userContext)
     return (
         <>
           <div className="p-25">
@@ -6,6 +10,7 @@ export function Part1(){
             <p className="place-self-center text-center">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi nemo omnis nulla! Enim, voluptates corrupti fuga officiis dolores vero atque? Perferendis sunt repellat vitae enim dicta commodi. Earum, nobis ut.
             </p>
+            <p>{`count is set to ${count}`}</p>
           </div>
         </>
     )
