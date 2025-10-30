@@ -5,11 +5,12 @@ import { useRef } from "react"
 import dog from "../../assets/dog.jpg"
 import cat from "../../assets/cat.jpg"
 import lion from "../../assets/lion.webp"
+import { Parent } from "./Parent"
 import rabbit from "../../assets/rabbit.png"
 export function Page1() {
   const [img, setImg] = useState(photo1)
   const [selectedValue, setselectedValue] = useState("");
-  const [name,setname]=useState("")
+  const [name, setname] = useState("")
   const [placeholder, setPlaceholder] = useState("Enter your name")
   const buttonref = useRef(null);
   const handleChange = (e) => {
@@ -52,15 +53,16 @@ export function Page1() {
     setselectedValue(e.target.value)
 
   }
-  const handleInput=(e)=>{
+  const handleInput = (e) => {
     setname(e.target.value)
   }
-  const handleSubmit=()=>{
+  const handleSubmit = () => {
     console.log("")
     alert("Thanku for submitting")
   }
   return (
     <>
+      {/* <Parent/> */}
       <div className="place-self-center">
         <img src={img} alt="image" className="h-100 w-100" />
         <button
@@ -75,16 +77,15 @@ export function Page1() {
       </div>
       <div className="place-self-center">
         <form action="" onSubmit={handleSubmit}>
-
-        <input type="text"
-          placeholder={placeholder}
-          value={name}
-          className="border-1 m-5"
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onInput={handleInput}
-        />
-        <button type="submit">Submit</button>
+          <input type="text"
+            placeholder={placeholder}
+            value={name}
+            className="border-1 m-5"
+            onFocus={handleFocus}
+            onBlur={handleBlur} selectedValue
+            onInput={handleInput}
+          />
+          <button type="submit">Submit</button>
         </form>
         <button
           onKeyDown={handleKeyDown}
@@ -95,36 +96,36 @@ export function Page1() {
         </button>
         <p>{name}</p>
       </div>
-        <div className="place-self-center">
-          <div>
-            <label for="animal">
-              Choose any option:
-            </label>
-            <select name="animal" id="drop-down" value={selectedValue} onChange={selectValue}>
-              <option value="dog">Dog</option>
-              <option value="rabbit">Rabbit</option>
-              <option value="cat">Cat</option>
-              <option value="lion">Lion</option>
-            </select>
-          </div>
-          <div className="mx-3 h-100 w-50">
-            {selectedValue === "" ?
-              <></> :
-              <>
-            {
-
-              selectedValue === "dog" ?
-                <img src={dog} alt="dog" /> :
-                selectedValue === "cat" ?
-                  <img src={cat} alt="cat" /> :
-                  selectedValue === "lion" ?
-                    <img src={lion} alt="rabbit" /> :
-                    <img src={rabbit} alt="rabbit" />
-            }  
-              </>
-            }
-          </div>
+      <div className="place-self-center flex">
+        <div>
+          <label htmlFor="animal">
+            Choose any option:
+          </label>
+          <select name="animal" id="drop-down" value={selectedValue} onChange={selectValue}>
+            <option value="dog">Dog</option>
+            <option value="rabbit">Rabbit</option>
+            <option value="cat">Cat</option>
+            <option value="lion">Lion</option>
+          </select>
         </div>
+        <div className="mx-3 h-100 w-50">
+          {selectedValue === "" ?
+            <></> :
+            <>
+              {
+
+                selectedValue === "dog" ?
+                  <img src={dog} alt="dog" /> :
+                  selectedValue === "cat" ?
+                    <img src={cat} alt="cat" /> :
+                    selectedValue === "lion" ?
+                      <img src={lion} alt="rabbit" /> :
+                      <img src={rabbit} alt="rabbit" />
+              }
+            </>
+          }
+        </div>
+      </div>
     </>
   )
 }
