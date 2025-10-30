@@ -28,7 +28,7 @@ export function HeroSection(){
           {console.log(count)}
             <h1>{`Count is set to ${count}`}</h1>
             <Part1/>
-            <Part2/>
+            {/* <Part2/> */}
             <Cards data={data}/>
         </div>
           

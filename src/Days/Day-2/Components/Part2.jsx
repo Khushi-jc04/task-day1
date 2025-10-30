@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { TryButton } from "./TryButton"
+import { useContext } from "react";
+import { userContext } from "../Pages/HomePage";
 export function Part2(){
+    const count=useContext(userContext)
     const [email,setEmail]=useState("");
     const handleChange=(e)=>{
         setEmail(e.target.value)
@@ -14,6 +17,7 @@ export function Part2(){
             <div className="place-self-center flex">
                 {email}
             </div>
+            <p>{`count is set to ${count}`}</p>
         </>
     )
 }
