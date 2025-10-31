@@ -6,14 +6,15 @@ import { Sidebar } from './components/Sidebar'
 import { Card } from './components/Card'
 import photo from "./assets/photo2.png"
 import { Header } from './components/Header'
-import { HomePage } from './Days/Day-2/Pages/HomePage'
+// import { HomePage } from './Days/Day-2/Pages/HomePage'
 import { Page1 } from './Days/Day-3/Page1'
+import { HomePage } from './Days/Day-4/Pages/HomePage'
 function App() {
  
   return (
     <>
-    <Page1/>
-      {/* <HomePage/> */}
+    {/* <Page1/> */}
+      <HomePage/>
       {/* <div class="grid grid-flow-col"> */}
         {/* side bar*/}
         {/* <div class="row-span-3 w-50"> */}
