@@ -1,0 +1,52 @@
+@media (width >= 48rem) { 
+
+
+    #card{
+        width: 100%;
+        border: 2px solid black;
+        margin:5px;
+        padding: 3px;
+        border-radius:10px;
+        display: flex;
+        
+    }
+    #left{
+        width: 50%;
+        }
+    #right{
+        width:50%;
+     
+    }
+    #heading{
+        font-size:xx-large;
+        color: green;
+        margin: 5px;
+        font-weight: bold;
+        font-family:fantasy;
+    }
+    #desc{
+        font-style: italic;
+    }
+    #right img{
+        width:100%;
+        height:300px
+    }
+}
+@media screen and (max-width: 480px)  { 
+    #card{
+        border: 2px solid black;
+        margin:5px;
+        border-radius:10px;
+    
+        
+    }
+      #heading{
+        color: green;
+        margin: 8px;
+        font-weight: bold;
+        font-family:fantasy;
+    }
+    #left{
+        text-align: center;
+    }
+}
