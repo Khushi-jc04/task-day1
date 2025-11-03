@@ -39,6 +39,11 @@ export function Component1() {
                     </>:<>
                     <div className="md:p-40 lg:p-10 lg:mx-10">
                     <Login/>
+                    <button
+                    className="bg-green-800 text-white place-self-center border-1 md:p-1 my-2 md:w-50 mx-22 rounded-sm w-50" 
+                    onClick={()=>{
+                      setLogin(!login)
+                    }}> Back</button>
                     </div>
                     </>
                 }

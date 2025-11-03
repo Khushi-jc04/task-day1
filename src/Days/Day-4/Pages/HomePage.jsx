@@ -41,7 +41,7 @@ export function HomePage() {
         <>
             <NavBar />
             <Component1 />
-            <div >
+            <div className="">
                 <div className="m-10 flex-col gap-4">
 
             {
