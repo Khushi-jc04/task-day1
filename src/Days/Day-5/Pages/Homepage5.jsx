@@ -1,11 +1,17 @@
 import photo from "../../../assets/coding.jpg"
 import { HeroSection } from "../Component/HeroSection"
-import { createContext } from "react"
+import { createContext, useCallback } from "react"
 import { Footer } from "../Component/Footer";
-export const cardData = createContext();
 import { Formm } from "../Component/Form";
 import { useState,useEffect } from "react";
+import { MemoizedHeroSection } from "../Component/HeroSection";
+import { useRef } from "react";
+
+export const CardData = createContext();
+export const MyState=createContext();
+
 export function Homepage5() {
+      const [state,setState]=useState(false)
     const [flag, setFlag] = useState(false);
     const data = [
         {
@@ -28,25 +34,29 @@ export function Homepage5() {
         },
 
     ]
-    const flagHandler = (newValue) => {
-        setFlag(newValue);
-    }
+  
+
+    const flagHandler=useCallback((newValue)=>{
+        setFlag(newValue)
+    },[]);
     useEffect(() => {
         setTimeout(() => {
             setFlag(true);
-        }, 2000)
+        }, 20000)
     }, [])
     return (
         <>
-            <cardData.Provider value={data}>
+            <CardData.Provider value={data}>
                 {
                      flag?
                      <div className="bg-black">
                        <Formm fun={flagHandler}/>
                      </div>:<></>
                 }
-                <HeroSection />
-            </cardData.Provider>
+               <MyState.Provider value={state}>
+                <MemoizedHeroSection/>
+               </MyState.Provider>
+            </CardData.Provider>
             <Footer />
         </>
     )
