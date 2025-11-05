@@ -9,13 +9,17 @@ import { Header } from './components/Header'
 // import { HomePage } from './Days/Day-2/Pages/HomePage'
 import { Page1 } from './Days/Day-3/Page1'
 // import { HomePage } from './Days/Day-4/Pages/HomePage'
-import { Homepage5 } from './Days/Day-5/Pages/Homepage5'
+// import { Homepage5 } from './Days/Day-5/Pages/Homepage5'
+import { DemoPage } from './Days/Day-6/Pages/DemoPage'
+
+
 function App() {
  
   return (
     <>
+      <DemoPage/>
     {/* <Page1/> */}
-      <Homepage5/>
+      {/* <Homepage5/> */}
       {/* <div class="grid grid-flow-col"> */}
         {/* side bar*/}
         {/* <div class="row-span-3 w-50"> */}
