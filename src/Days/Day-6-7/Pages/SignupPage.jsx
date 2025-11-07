@@ -11,6 +11,7 @@ import 'quill/dist/quill.snow.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import { useNavigate } from "react-router-dom"
 
 const options = [
     { value: "secondary", label: "Secondary" },
@@ -30,8 +31,10 @@ const skills = [
 
 export function SignupPage() {
 
+    const navigate=useNavigate();
     const [showPassword, setShowPassword] = useState(true)
     useEffect(() => {
+        // debugger
         const storedData = localStorage.getItem('formData')
         if (storedData) {
             const paresed = JSON.parse(storedData)
@@ -53,7 +56,7 @@ export function SignupPage() {
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = '/'; 
+                navigate("/")
             }
         });
     };
@@ -145,7 +148,7 @@ export function SignupPage() {
 
                             className="w-140"
                         />
-                        <span onClick={() => {
+                        <span className="relative right-6 top-1" onClick={() => {
                             setShowPassword(!showPassword)
                         }}>
                             {showPassword ? <FaEyeSlash /> : <FaEye />}

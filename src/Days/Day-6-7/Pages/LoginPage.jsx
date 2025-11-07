@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(true)
-  const [validate,setValidate]=useState(false)
+  // const [emailError, setEmailError] = useState(false)
+  // const[passwordError, setPassError] = useState(false)
+  const [errors, setErrors] = useState({ email: '', password: '' });
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -22,19 +24,18 @@ export function LoginPage() {
         .required("Required")
     }),
     onSubmit: values => {
-            const data=JSON.parse(localStorage.getItem('formData'))
-            if(values.email===data.email&&values.password===data.password){
-                 navigate("/profile")
-            }
-           else
-           {
-            setValidate(true)
-           }
+      // debugger
+      const data = JSON.parse(localStorage.getItem('formData'))
+      {
+        values.email === data.email ? values.password === data.password ? navigate("/profile") : setErrors(prev => ({ ...prev, email: 'Invalid password' })) : setErrors(prev => ({ ...prev, email: 'Invalid email address.' }));
+      }
+
 
     },
   })
   return (
     <>
+
       <div className="m-3 md:py-40 md:px-25">
         <form onSubmit={formik.handleSubmit}
           className="md:flex md:flex-col border-1 md:w-120 md:max-w-120 rounded-md place-self-center">
@@ -45,7 +46,7 @@ export function LoginPage() {
             onChange={formik.handleChange}
             value={formik.values.email}
             autoComplete="off"
-            className="md:m-4 border-b-1 border-black"
+            className="md:mx-4 border-b-1 border-black"
           />
           {/* {
             formik.touched.email && formik.errors.email ? (
@@ -55,25 +56,26 @@ export function LoginPage() {
 
 
           <label htmlFor="password" className="md:m-2 p-2 font-bold">Password:</label>
-          <div className="flex border-b-1 md:mx-4">
 
-            <input type={showPassword ? 'password' : 'text'} name="password" id="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              className="  border-black w-100 "
-            />
-            <span onClick={() => {
-              setShowPassword(!showPassword)
-            }}>
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </span>
-          </div>
+
+          <input type={showPassword ? 'password' : 'text'} name="password" id="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            className="md:mx-4 border-b-1 border-black"
+          />
+          <span className="absolute right-118 top-102" onClick={() => {
+            setShowPassword(!showPassword)
+          }}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+
+          <div>
           {
-             validate?
-          <div className="text-red-800  m-4 font-bold">
-            Invalid credentials
-          </div>:<></>
+            errors.email==''?errors.password==''?<></>:<div className="p-2 text-red-800 font-bold m-2">{errors.password}</div>:
+              <div className="p-2 text-red-800 font-bold m-2">{errors.email}</div>
           }
+          </div>
+         
           <button type="submit" className="bg-black md:p-2 rounded-xl font-bold text-white md:text-xl md:m-3">Login</button>
           <p className="text-center md:p-2">Don't have any account?
             <Link to="/signup" className="underline font-black"> Signup</Link>
